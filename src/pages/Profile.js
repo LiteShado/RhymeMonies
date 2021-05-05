@@ -1,10 +1,6 @@
-import {useEffect, useState, userState} from 'react'
+import {useEffect, useState} from 'react'
 import axios from 'axios'
-// import Music from '../components/Music'
-// import '../css/Music.css'
 import env from 'react-dotenv'
-// import SongChoice from '../pages/SongChoice'
-// import { Link, useParams } from 'react-router-dom'
 
 
 const Profile = () => {
@@ -28,27 +24,10 @@ const Profile = () => {
         setProfile(res)
         console.log(res)
     }
-    // const getProfile = async() => {
-    //         try {
-    //         const res = await axios.get(`${env.API_URL}/users/profile`)
-    //         setProfile(res.data)
-    //         console.log(res)
-    //         console.log(res.data)
-    //         console.log(props.song.id)
-    //         // console.log(props.song.id)
-    //         console.log(res.data.song)
-    //         console.log(res)
-    //         setProfile(res.data.song)
-    //         console.log(res.data.song)
-
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    // }
 
     useEffect(() => {
         getProfile()
-    }, [])
+    },)
 
 console.log(profile)
 
@@ -69,13 +48,16 @@ const editSubmit = async (e) => {
     }
 }
 const handleDelete = async (e) => {
+    e.preventDefault()
+    let userId = localStorage.getItem('userId')
     try {
         let resss = await axios.delete(`${env.API_URL}/users/delete`, {
-        email: email
+        headers: {
+            authorization: userId
+        }
     })
     console.log(resss)
     localStorage.clear()
-    window.location.reload();
 
     } catch (error) {
         console.log(error)
@@ -109,7 +91,7 @@ return (
 
             <h3 className="deleteTitle"> Delete My Profile </h3>
                 <form onSubmit={handleDelete}>
-                    <input name="newEmail" type="hidden" value={email} onChange={(e) => setNewEmail(e.target.value)} />
+
 
                     <button type="submit" value="submit">delete</button>
                 </form>

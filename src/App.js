@@ -23,16 +23,6 @@ function App() {
 
   console.log(id)
 
-    // try {
-    //   let user = await axios.get('http://localhost:3001/users/profile' ,{
-    //   where:{
-    //     id: id
-    //   }
-    //   })
-
-
-    console.log(id)
-
     if(id) {
       setUser(id)
       console.log(id)
@@ -40,23 +30,13 @@ function App() {
 
     console.log(user)
 
-
-    // if(user.data.user) {
-    //   setUser(user.data)
-    //   console.log(user.data)
-    // }
-    // } catch (error) {
-    //   console.log(error)
-    // }
-
   }
 
   useEffect(() => {
     userInfo()
-  }, [])
+  },[])
 
   console.log(user)
-  // console.log(user.id)
 
   return (
 
@@ -72,15 +52,6 @@ function App() {
       <Home />
         }
       </Route>
-      {/* <Route
-        path="/"
-        exact>
-        { user.id ?
-        <Redirect to="/songs" />
-      :
-      <Home />
-        }
-      </Route> */}
 
       <Route
         path="/users/new"
@@ -143,70 +114,11 @@ function App() {
         exact
         component={Lyric}
       />
-      {/* <Route
-        path="/songs/:id"
-        exact
-        render={(routeInfo) => {
-        }}
-        component={SongChoice}
-        /> */}
       <Route
         path="/songs/:id"
         exact
         component={SongChoice}
         />
-
-      {/* <Route
-      exact path="/users">
-      { user.id ?
-        <Redirect to="/songs" />
-      :
-        <Login />
-      }
-      </Route>
-
-      <Route
-      exact path="/users/new">
-      { user.id ?
-        <Redirect to="/songs" />
-      :
-        <Signup />
-      }
-      </Route> */}
-
-      {/* <Route exact path="/users/songs">
-        {user.id &&
-          <MySongs />
-        }
-      </Route> */}
-      {/* <Route exact path="/users/profile">
-      { user.id &&
-          <Profile />
-      }
-      </Route> */}
-
-      {/* <Route exact path="/songs">
-          { user.id &&
-          <Songs />
-        }
-      </Route> */}
-
-      {/* <Route exact path="/songs/new">
-        { user.id &&
-          <New />
-        }
-      </Route> */}
-
-      {/* <Route
-      path="/songs/:id"
-      render={(routeInfo) => {
-        // console.log(routeInfo);
-        return <SongChoice
-        // id={routeInfo.match.params.id}
-        />
-      }}
-      /> */}
-
 
     </div>
   )

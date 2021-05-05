@@ -1,8 +1,6 @@
 import {useEffect, useState, useContext} from 'react'
 import {UserContext} from '../context/UserContext'
 import axios from 'axios'
-// import Music from '../components/Music'
-// import '../css/Music.css'
 import env from 'react-dotenv'
 
 
@@ -15,7 +13,8 @@ const Lyric = (props) => {
 
 
     const [lyric,setLyric] = useState(null)
-    const [userId,setUserId] = useState('')
+    // const [userArtist,setUserArtist] = useState(null)
+    const [id,setId] = useState('')
     const [songId,setSongId] = useState('')
     // console.log(props.match.params.id)
     console.log(props)
@@ -45,24 +44,50 @@ const Lyric = (props) => {
         console.log(array)
 
 
+
         } catch (error) {
             console.log(error)
         }
     }
+    // useEffect(() => {
+    //     get()
+    // }, [])
+
+    const findUser = async() => {
+        console.log(lyric)
+
+        // let u
+        // for (u = 0; u<lyric.length; u++) {
+
+    // try {
+    //     let userLookUp = lyric[u].userId
+    //     console.log(userLookUp)
+
+    //     const userFound = await axios.get(`${env.API_URL}/users/find/${userLookUp}`)
+    //     console.log(userFound)
+    //     const userArtist = userFound.data.user.name
+    //     console.log(userArtist)
+    // } catch (error) {
+    //     console.log(error)
+    // }
+    }
+    // }
+
     useEffect(() => {
         get()
-    }, [])
+        findUser()
+    },)
 
 
     const signupSubmit = async (e) => {
         e.preventDefault()
         // let user = localStorage.getItem('userId')
-        let id = localStorage.getItem('userId')
-        let idd = props.match.params.id
+        let id = localStorage.getItem('id')
+        let songId = props.match.params.id
 
 
         console.log(id)
-        console.log(idd)
+        console.log(songId)
 
 
         console.log(get)
@@ -70,7 +95,7 @@ const Lyric = (props) => {
         let res = await axios.post(`${env.API_URL}/lyrics/${props.match.params.id}`, {
             lyric: testLyric,
             userId: id,
-            songId: idd
+            songId: songId
         })
         console.log(res)
         // localStorage.setItem('lyric', res.data.song.lyric)
@@ -89,6 +114,7 @@ const Lyric = (props) => {
                 return (
                     <li className="lyricList" key={res.id}>
                         {res.lyric}
+
                     </li>
                 )
                 })}
@@ -99,9 +125,9 @@ const Lyric = (props) => {
                 <form onSubmit={signupSubmit}>
                     <input name="lyric" type="text" value={testLyric} onChange={(e) => setTestLyric(e.target.value)} />
 
-                    <input name="userId" type="hidden" placeholder="UserId" value={userId} onChange={(e) => setUserId(e.target.value)} />
+                    <input name="userId" type="hidden" placeholder="UserId" value={id} onChange={(e) => setId(e.target.value)} />
 
-                    <input name="songId" type="hidden" placeholder="SongId" value={songId} onChange={(e) => setUserId(e.target.value)} />
+                    <input name="songId" type="hidden" placeholder="SongId" value={songId} onChange={(e) => setSongId(e.target.value)} />
 
                     <input type="submit" value="submit" />
                 </form>

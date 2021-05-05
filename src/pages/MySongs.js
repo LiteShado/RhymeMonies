@@ -1,18 +1,10 @@
-import {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
-// import Music from '../components/Music'
-// import '../css/Music.css'
 import env from 'react-dotenv'
-// import SongChoice from '../pages/SongChoice'
 import { Link } from 'react-router-dom'
-import {UserContext} from '../context/UserContext'
 
 const MySongs = (props) => {
 
     console.log(props)
-
-    // const {userState} = useContext(UserContext)
-    // const[allSongs, setAllSongs] = useState(null)
 
 
     const viewSongs = async (e) => {

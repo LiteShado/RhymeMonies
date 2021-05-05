@@ -10,18 +10,18 @@ const New = (props) => {
 
     const [title,setTitle] = useState('')
     const [genre,setGenre] = useState('')
-    const [userId, setUserId] = useState('')
+    const [id, setId] = useState('')
 
     const newSong = async (e) => {
         e.preventDefault()
         // let user = localStorage.getItem('userId')
-        let userId = localStorage.getItem('userId')
-        console.log(userId)
+        let id = localStorage.getItem('id')
+        console.log(id)
 
         let res = await axios.post(`${env.API_URL}/songs/new`, {
             title: title,
             genre: genre,
-            id: userId
+            id: id
         })
         console.log(res)
         localStorage.setItem('title', res.data.song.title)
@@ -47,7 +47,7 @@ const New = (props) => {
                         <option name="Pop">Pop</option>
                         <option name="RnB">RnB</option>
                     </select>
-                    <input name="userId" type="hidden" value={userId} onChange={(e) => setUserId(e.target.value)} />
+                    <input name="userId" type="hidden" value={id} onChange={(e) => setId(e.target.value)} />
 
                     <input type="submit" value="submit" />
                 </form>

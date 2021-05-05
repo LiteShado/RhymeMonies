@@ -20,7 +20,6 @@ const SongChoice = (props) => {
         }, [])
 
         console.log(song)
-        // console.log(props)
 
     return (
         <div>
