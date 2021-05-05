@@ -11,8 +11,8 @@ const MySongs = (props) => {
 
     console.log(props)
 
-    const {userState} = useContext(UserContext)
-    const[allSongs, setAllSongs] = useState(null)
+    // const {userState} = useContext(UserContext)
+    // const[allSongs, setAllSongs] = useState(null)
 
 
     const viewSongs = async (e) => {
@@ -26,41 +26,35 @@ const MySongs = (props) => {
         console.log(idd)
 
 
-        console.log(get)
+        // console.log(get)
 
-        let res = await axios.post(`${env.API_URL}/lyrics/${props.match.params.id}`, {
-            lyric: testLyric,
-            userId: id,
-            songId: idd
+        let res = await axios.get(`${env.API_URL}/songs/user`, {
+
         })
         console.log(res)
         // localStorage.setItem('lyric', res.data.song.lyric)
 
-        setSong(res.data.song)
+        // setSong(res.data.song)
     }
 
-    return (
-        <>
-        <form onSubmit={viewSongs}>
-                    <input name="lyric" type="text" value={testLyric} onChange={(e) => setTestLyric(e.target.value)} />
-
-                    <input name="userId" type="hidden" placeholder="UserId" value={userId} onChange={(e) => setUserId(e.target.value)} />
-
-                    <input name="songId" type="hidden" placeholder="SongId" value={songId} onChange={(e) => setUserId(e.target.value)} />
-
-                    <input type="submit" value="submit" />
-                </form>
-    </>
+return (
     <>
-        <div className="mySongs">
-        <h1>Here Are Your Songs!!</h1>
-        {/* {allSongs && allSongs.map((res, i) => { */}
-            console.log(res)
-        return (
-            <li >
-                <Link
-                className="userSongs">
-                {/* <SongChoice
+            <>
+                <form onSubmit={viewSongs}>
+                    {/* <input name="viewSongs" type="hidden" value={none} onChange={(e) => setUserId(e.target.value)}/> */}
+
+                    <button type="submit" value="submit">View My MySongs</button>
+                </form>
+            </>
+            <>
+                <h1>Here Are Your Songs!!</h1>
+                {/* {allSongs && allSongs.map((res, i) => { */}
+
+                return (
+                <li >
+                    <Link
+                    className="userSongs">
+                    {/* <SongChoice
                 key={res.id}
                 song={res.title}
                 // userId={allUserSongs.userId}
@@ -68,15 +62,14 @@ const MySongs = (props) => {
                 // placeholder={allUserSongs.title}
                 />
                 {allSongs.title} | {allSongs.genre}</Link> */}
-            </Link>
-            </li>
-            </div>
-        )
+                        </Link>
+                    </li>
 
-        }
-        {/* )} */}
+                )
 
-        </div>
+            </>
+
+    </>
     )
 
 }
