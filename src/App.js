@@ -207,11 +207,6 @@ function App() {
       }}
       /> */}
 
-      {/* <Route exact path="/songs/:id/lyrics">
-      {user.id &&
-          <Lyric />
-        }
-      </Route> */}
 
     </div>
   )
