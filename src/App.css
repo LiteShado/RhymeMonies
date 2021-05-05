@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  justify-content: center;
+  align-items: center;
+}
+
+.lyricList {
+  list-style-type: none;
+}
+
+.viewLyrics {
+  font-size: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: 3px solid black;
+
+}
+
+.mySongs {
+  color: 3px solid black;
+  border: 4px solid blue;
+}
+
+
+* {
+
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content {
+  max-width: 1200px;
+  padding: 20px;
+  margin-top: 40px;
+}
+.communitySongs {
+  font-style: normal;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-stretch: semi-expanded;
+  font-size: 25px;
+  color: black;
+
+}
+
+li {
+  list-style-type:decimal-leading-zero;
+  list-style-position: outside;
+  padding: 6px;
+  margin: 4px;
+  size: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
