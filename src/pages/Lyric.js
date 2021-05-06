@@ -49,29 +49,11 @@ const Lyric = (props) => {
             console.log(error)
         }
     }
-    // useEffect(() => {
-    //     get()
-    // }, [])
 
     const findUser = async() => {
         console.log(lyric)
 
-        // let u
-        // for (u = 0; u<lyric.length; u++) {
-
-    // try {
-    //     let userLookUp = lyric[u].userId
-    //     console.log(userLookUp)
-
-    //     const userFound = await axios.get(`${env.API_URL}/users/find/${userLookUp}`)
-    //     console.log(userFound)
-    //     const userArtist = userFound.data.user.name
-    //     console.log(userArtist)
-    // } catch (error) {
-    //     console.log(error)
-    // }
     }
-    // }
 
     useEffect(() => {
         get()
@@ -122,7 +104,7 @@ const Lyric = (props) => {
 
 
                 <h1>Add Your Lyrics To The Song!</h1>
-                <form onSubmit={signupSubmit}>
+                <form onSubmit={signupSubmit} className="form">
                     <input name="lyric" type="text" value={testLyric} onChange={(e) => setTestLyric(e.target.value)} />
 
                     <input name="userId" type="hidden" placeholder="UserId" value={id} onChange={(e) => setId(e.target.value)} />
@@ -134,70 +116,6 @@ const Lyric = (props) => {
 
         </>
     )
-
-
-//         axios.get(`${env.API_URL}/songs/${params.id}/lyrics`).then((response) => {
-//            console.log(response)
-//            setAllLyric(response.data)
-//        })
-// }
-//     useEffect(getAllLyric, [])
-
-//     const [lyric, setLyric] = useState({
-//         lyric: ''
-//     })
-
-//     const handleChange = (e) => {
-//         const { name, value } = e.target
-//         setLyric({
-//             ...lyric,
-//             [name]: value
-//         })
-//     }
-
-//     const handleSubmit = (e) => {
-        // e.preventDefault()
-//         axios.post(`${env.API_URL}/songs/${params.id}/lyrics`, lyric).then((response) => {
-//             console.log(response);
-//         })
-//         setShouldRedirect(response.data.id)
-//         }
-
-// const [lyric, setLyric] = useState({})
-
-
-
-        // return (
-            // <div>
-            // <h1>Here Are the Lyrics</h1>
-            // <ul>
-            //     <div>
-            //         {allLyric.map((lyric) => {
-            //             return (
-            //             <div>
-            //                 <li key={lyric.id}>
-            //                     <Link to={`/songs/${params.id}/lyrics`}>{lyric.lyric}</Link>
-            //                 </li>
-            //                     <Link to={`/songs/${params.id}/lyrics`}>View Lyrics</Link>
-
-            //             </div>
-            //             )
-            //             })}
-            //             </div>
-                // <h1>Add Your Lyrics:</h1>
-                //     <form onSubmit={handleSubmit}>
-                //         <div>
-                //             <label htmlFor="new-lyric">Lyrics:</label>
-                //             <input type="text" placeholder="lyrics" name="lyric" value={lyric.lyric} onChange={handleChange}
-                //             />
-                //         </div>
-
-                //     <input type="submit" value="submit" />
-
-                //     </form>
-       // </ul>
-            // </div>
-//         )
 
 }
 export default Lyric

@@ -35,10 +35,6 @@ const Songs = () => {
                 <SongChoice
                 key={res.id}
                 song={res}
-                // userId={res.userId}
-                // userId={res.userId}
-                // preview="true"
-                // placeholder={res.title}
                 />
                 {res.title} | {res.genre}
                 </div>

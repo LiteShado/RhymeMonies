@@ -85,12 +85,16 @@ function App() {
 
       <Route
         path="/songs/new/submit"
-        exact
-        component={New}
-      />
+        exact>
+        { user.id ?
+        <New />
+          :
+        <Login />
+        }
+      </Route>
 
       <Route
-        path="/songs/user/list"
+        path="/songs/list"
         exact
         component={MySongs}
       />
@@ -119,6 +123,15 @@ function App() {
         exact
         component={SongChoice}
         />
+      <Route
+        path="/users/delete"
+        exact>
+          { user.id ?
+        <Songs />
+        :
+        <Redirect to="/users/new" />
+          }
+        </Route>
 
     </div>
   )

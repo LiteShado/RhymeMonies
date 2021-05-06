@@ -47,8 +47,7 @@ const editSubmit = async (e) => {
         console.log(error)
     }
 }
-const handleDelete = async (e) => {
-    e.preventDefault()
+const handleDelete = async () => {
     let userId = localStorage.getItem('userId')
     try {
         let resss = await axios.delete(`${env.API_URL}/users/delete`, {

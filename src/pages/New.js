@@ -12,8 +12,8 @@ const New = (props) => {
     const [genre,setGenre] = useState('')
     const [id, setId] = useState('')
 
-    const newSong = async (e) => {
-        e.preventDefault()
+    const newSong = async () => {
+        // e.preventDefault()
         // let user = localStorage.getItem('userId')
         let id = localStorage.getItem('id')
         console.log(id)
@@ -29,6 +29,7 @@ const New = (props) => {
 
         setSong(res.data.song)
         // localStorage.setItem('userId', res.data.user.id)
+        console.log(song)
     }
 
     return (
@@ -42,10 +43,15 @@ const New = (props) => {
                     <label for="genre">Choose your Genre:</label>
 
                     <select name="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
-                        <option name="Hip Hop">Hip Hop</option>
-                        <option name="Rap">Rap</option>
-                        <option name="Pop">Pop</option>
-                        <option name="RnB">RnB</option>
+                        <option>Select Genre</option>
+                        <option name="HipHop" value="HipHop">Hip Hop</option>
+                        <option value="Rap" name="Rap">Rap</option>
+                        <option value="Pop" name="Pop">Pop</option>
+                        <option value="RnB" name="RnB">RnB</option>
+                        <option value="Acoustic" name="Acoustic">Acoustic</option>
+                        <option value="EDM" name="EDM">EDM</option>
+                        <option value="Country" name="Country">Country</option>
+                        <option value="Rock" name="Rock">Rock</option>
                     </select>
                     <input name="userId" type="hidden" value={id} onChange={(e) => setId(e.target.value)} />
 

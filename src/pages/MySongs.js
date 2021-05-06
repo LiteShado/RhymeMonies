@@ -1,71 +1,44 @@
+import {useEffect, useState} from 'react'
 import axios from 'axios'
 import env from 'react-dotenv'
-import { Link } from 'react-router-dom'
 
-const MySongs = (props) => {
+const MySongs = () => {
 
-    console.log(props)
-
-
-    const viewSongs = async (e) => {
-        e.preventDefault()
-        // let user = localStorage.getItem('userId')
-        let id = localStorage.getItem('userId')
-        let idd = props.match.params.id
+    const[allMySongs, setAllMySongs] = useState(null)
+    const id = localStorage.getItem('id')
 
 
-        console.log(id)
-        console.log(idd)
+    const getAllSongs = async() => {
+            console.log(id)
+            try {
+            const res = await axios.get(`${env.API_URL}/songs/list`)
+            setAllMySongs(res.data)
+            console.log(res.data)
 
-
-        // console.log(get)
-
-        let res = await axios.get(`${env.API_URL}/songs/user`, {
-
-        })
-        console.log(res)
-        // localStorage.setItem('lyric', res.data.song.lyric)
-
-        // setSong(res.data.song)
+            } catch (error) {
+                console.log(error)
+            }
     }
 
-return (
-    <>
-            <>
-                <form onSubmit={viewSongs}>
-                    {/* <input name="viewSongs" type="hidden" value={none} onChange={(e) => setUserId(e.target.value)}/> */}
+    useEffect(() => {
+        getAllSongs()
+    },[])
 
-                    <button type="submit" value="submit">View My MySongs</button>
-                </form>
-            </>
-            <>
-                <h1>Here Are Your Songs!!</h1>
-                {/* {allSongs && allSongs.map((res, i) => { */}
+    return (
+        <>
+        <h1>Your Song Collection</h1>
+        {allMySongs && allMySongs.map((res, i) => {
+            console.log(res)
+        return (
+            <li key={res.id}>
+                <div className="userSongs">
+                {res.title} | {res.genre}
+                </div>
+            </li>
 
-                return (
-                <li >
-                    <Link
-                    className="userSongs">
-                    {/* <SongChoice
-                key={res.id}
-                song={res.title}
-                // userId={allUserSongs.userId}
-                // preview="true"
-                // placeholder={allUserSongs.title}
-                />
-                {allSongs.title} | {allSongs.genre}</Link> */}
-                        </Link>
-                    </li>
-
-                )
-
-            </>
-
-    </>
+            )})
+        }
+        </>
     )
-
 }
-
-
-
 export default MySongs

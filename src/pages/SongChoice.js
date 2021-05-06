@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom'
 const SongChoice = (props) => {
     const [song, setSong] = useState({})
     console.log(props)
+    console.log(song)
+    console.log(setSong)
 
     const fetchSong = async() => {
         const response = await axios.get(`${env.API_URL}/songs/${props.song.id}`)
