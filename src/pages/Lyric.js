@@ -86,7 +86,9 @@ const Lyric = (props) => {
     }
 
     return (
-        <>
+
+        <div className="lyricContainer">
+
                 <h1>Check Out These Lyrics!!</h1>
             <>
 
@@ -114,7 +116,7 @@ const Lyric = (props) => {
                     <input type="submit" value="submit" />
                 </form>
 
-        </>
+        </div>
     )
 
 }

@@ -25,7 +25,7 @@ const MySongs = () => {
     },[])
 
     return (
-        <>
+        <div className="mySongContainer">
         <h1>Your Song Collection</h1>
         {allMySongs && allMySongs.map((res, i) => {
             console.log(res)
@@ -38,7 +38,7 @@ const MySongs = () => {
 
             )})
         }
-        </>
+        </div>
     )
 }
 export default MySongs
